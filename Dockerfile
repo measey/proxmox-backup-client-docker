@@ -2,7 +2,7 @@ FROM debian:11
 
 # Universally required APT packages
 RUN apt-get update \
-        && apt-get install -y --no-install-recommends ca-certificates wget cron openssh-client \
+        && apt-get install -y --no-install-recommends ca-certificates wget cron \
         && rm -rf /var/lib/apt/lists/*
 
 # Installation if ARM64 architecture
