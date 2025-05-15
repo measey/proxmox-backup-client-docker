@@ -1,4 +1,4 @@
-FROM debian:11-slim
+FROM debian:11
 
 # Universally required APT packages
 RUN apt-get update \
