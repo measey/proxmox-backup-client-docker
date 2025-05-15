@@ -24,13 +24,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push master
+      - name: Build and push main
         uses: docker/build-push-action@v2
         with:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/measey/proxmox-backup-client:latest
-        if: steps.extract_branch.outputs.branch == 'master'
+        if: steps.extract_branch.outputs.branch == 'main'
       
       - name: Build and push version
         uses: docker/build-push-action@v2
@@ -38,4 +38,4 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/measey/proxmox-backup-client:${{ steps.extract_branch.outputs.branch }}
-        if: steps.extract_branch.outputs.branch != 'master'
+        if: steps.extract_branch.outputs.branch != 'main'
