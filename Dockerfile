@@ -16,8 +16,7 @@ RUN if [ "$(dpkg --print-architecture)" = "arm64" ]; then \
         && dpkg -i libqrencode4_4.1.1-1_arm64.deb \
         && dpkg -i libssl1.1_1.1.1n-0+deb11u5_arm64.deb \
         && dpkg -i proxmox-backup-client_2.4.2-1_arm64.deb \
-        && rm -f proxmox-backup-client_2.4.2-1_arm64.deb libqrencode4_4.1.1-1_arm64.deb libssl1.1_1.1.1n-0+deb11u5_arm64.deb \
-        && apt-get clean; \
+        && rm -f proxmox-backup-client_2.4.2-1_arm64.deb libqrencode4_4.1.1-1_arm64.deb libssl1.1_1.1.1n-0+deb11u5_arm64.deb; \
     fi
 
 # Installation if AMD64 architecture
@@ -26,7 +25,7 @@ RUN if [ "$(dpkg --print-architecture)" = "amd64" ]; then \
         && wget -q https://enterprise.proxmox.com/debian/proxmox-release-bullseye.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg \
         && apt-get update \
         && apt-get install -y --no-install-recommends proxmox-backup-client \
-        && apt-get clean && rm -rf /var/lib/apt/lists/*; \
+        && rm -rf /var/lib/apt/lists/*; \
     fi
 
 ENTRYPOINT ["proxmox-backup-client"]
